@@ -1,58 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, {Component} from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import Dashboard from "./components/Dashboard";
+import NewQuestion from "./components/NewQuestion";
+import Leaderboard from "./components/Leaderboard";
+import Header from "./components/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+//TODO: Add Login
+//TODO: Add Logout
+//TODO: Need a 404 component
+//TODO: Need a Header component with a nav bar
+//TODO:
+
+class App extends Component {
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+        <>
+          <Header/>
+
+          {/*put loading bar here*/}
+
+          <Router>
+            <Route path='/' exact component={Dashboard} />
+            <Route path='/new-question' exact component={NewQuestion} />
+            <Route path='/leaderboard' exact component={Leaderboard} />
+          </Router>
+        </>
+    )
+  }
 }
 
 export default App;
