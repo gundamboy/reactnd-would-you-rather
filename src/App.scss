@@ -1,4 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "scss/header";
 
 .App {
   text-align: center;

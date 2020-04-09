@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
 import NewQuestion from "./components/NewQuestion";
 import Leaderboard from "./components/Leaderboard";
 import Header from "./components/Header";
@@ -20,17 +21,15 @@ class App extends Component {
 
   render() {
     return (
-        <>
-          <Header/>
+        <Router>
+            <Header/>
+            {/*put loading bar here*/}
 
-          {/*put loading bar here*/}
-
-          <Router>
-            <Route path='/' exact component={Dashboard} />
-            <Route path='/new-question' exact component={NewQuestion} />
-            <Route path='/leaderboard' exact component={Leaderboard} />
-          </Router>
-        </>
+            <Route path='/' exact component={Login} />
+            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/new-question' component={NewQuestion} />
+            <Route path='/leaderboard' component={Leaderboard} />
+        </Router>
     )
   }
 }

@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 
-//TODO: create login component
-class Login extends Component {
+class AnsweredQuestionsList extends Component {
     render() {
         return (
             <div>
-                Login
+                <h2>answered q's</h2>
             </div>
         );
     }
 }
 
-export default Login;
+export default AnsweredQuestionsList;

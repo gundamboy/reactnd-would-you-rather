@@ -1,0 +1,39 @@
+.navbar-collapse {
+  .profileIdent {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    @include media-breakpoint-up(md) {
+      border-right: 1px solid #cccccc;
+      margin-right: 1em;
+      padding-right: 1em;
+    }
+
+    img {
+      max-width: 36px;
+    }
+
+    .userInfo {
+      margin-left: 0.5em;
+
+      h6 {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 2px;
+      }
+
+      span {
+        display: block;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .logout {
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

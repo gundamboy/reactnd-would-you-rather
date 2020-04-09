@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 //TODO: create view for voting/answering on a question
-class Question extends Component {
+class SingleQuestion extends Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class Question extends Component {
     }
 }
 
-export default Question;
+export default SingleQuestion;
