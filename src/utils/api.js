@@ -3,7 +3,6 @@ import {
     _getQuestions,
     _saveQuestion,
     _saveQuestionAnswer,
-    formatQuestion
 } from './_DATA.js'
 
 export function getInitialData () {
@@ -16,6 +15,15 @@ export function getInitialData () {
     }))
 }
 
+export function getUsers () {
+    return _getUsers();
+}
+
+export function getQuestions () {
+    return _getQuestions();
+}
+
+
 export function saveQuestion (info) {
     //console.log('saving', info)
     return _saveQuestion(info)
@@ -23,8 +31,4 @@ export function saveQuestion (info) {
 
 export function saveQuestionAnswer (info) {
     return _saveQuestionAnswer(info)
-}
-
-export function formatNewQuestion (info) {
-    return formatQuestion(info)
 }

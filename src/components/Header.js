@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import tempProfileImage from "../assets/images/fjord.png";
 
 class Header extends Component {
+    // TODO: impliment Logout functionality
     render() {
         return (
             <header>
@@ -15,7 +16,7 @@ class Header extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse>
                         <Nav className="mr-auto">
-                            <LinkContainer to="/dashboard" >
+                            <LinkContainer to="/" >
                                 <NavLink>Dashboard</NavLink>
                             </LinkContainer>
                             <LinkContainer to="/new-question">
@@ -25,20 +26,25 @@ class Header extends Component {
                                 <NavLink>Leaderboard</NavLink>
                             </LinkContainer>
                         </Nav>
-                        <Navbar.Text>
-                            <div className="profileIdent">
-                                <img src={tempProfileImage} alt=""/>
-                                <div className="userInfo">
-                                    <h6>User Name</h6>
-                                    <span>Character Class</span>
+                        {this.props.loggedIn &&
+                            <>
+                            <Navbar.Text>
+                                <div className="profileIdent">
+                                    <img src={tempProfileImage} alt=""/>
+                                    <div className="userInfo">
+                                        <h6>User Name</h6>
+                                        <span>Character Class</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </Navbar.Text>
-                        <Navbar.Text>
-                            <div className="logout">
+                            </Navbar.Text>
+                                <Navbar.Text>
+                                <div className="logout">
                                 <p>Log Out</p>
-                            </div>
-                        </Navbar.Text>
+                                </div>
+                                </Navbar.Text>
+                            </>
+                        }
+
                     </Navbar.Collapse>
                 </Navbar>
             </header>

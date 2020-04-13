@@ -1,14 +1,10 @@
 import {combineReducers} from "redux";
+import authedUser from "./reducer-authedUser";
+import users from "./reducer-users";
+import questions from "./reducer-questions";
 
-export default combineReducers ({
-    authedUser
+export default combineReducers({
+    authedUser,
+    users,
+    questions
 })
-
-function authedUser (state = null, action) {
-    switch (action.type) {
-        case "TEMP" :
-            return action.id
-        default :
-            return state
-    }
-}

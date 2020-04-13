@@ -1,3 +1,5 @@
+import { formatQuestion } from './helpers';
+
 let users = {
     fjord: {
         id: 'fjord',
@@ -85,7 +87,7 @@ let users = {
         },
         questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r', 'gj52f6pxz2vj24cmhsxv96'],
     }
-}
+};
 
 let questions = {
     "8xf0y6ziyjabvozdd253nd": {
@@ -270,11 +272,7 @@ let questions = {
             text: 'wake up as a donut'
         }
     }
-}
-
-function generateUID () {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-}
+};
 
 export function _getUsers () {
     return new Promise((res, rej) => {
@@ -286,22 +284,6 @@ export function _getQuestions () {
     return new Promise((res, rej) => {
         setTimeout(() => res({...questions}), 1000)
     })
-}
-
-export function formatQuestion ({ optionOneText, optionTwoText, author }) {
-    return {
-        id: generateUID(),
-        timestamp: Date.now(),
-        author,
-        optionOne: {
-            votes: [],
-            text: optionOneText,
-        },
-        optionTwo: {
-            votes: [],
-            text: optionTwoText,
-        }
-    }
 }
 
 export function _saveQuestion (question) {
