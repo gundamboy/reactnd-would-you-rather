@@ -3,7 +3,6 @@ import {Col, Container, Row, Tabs, Tab} from "react-bootstrap"
 import {connect} from "react-redux";
 import SingleQuestion from "./SingleQuestion";
 
-//TODO: create the main dashboard view that appears after logging in
 class Dashboard extends Component {
     componentDidMount() {
 
@@ -19,14 +18,14 @@ class Dashboard extends Component {
                     <Col>
                         <Tabs defaultActiveKey="unanswered" id="questions-tabs">
                             <Tab eventKey="unanswered" title="Unanswered Questions">
-                                <ul className="dashboard-list">
+                                <ul className="dashboard-list list-unstyled">
                                     {this.props.unansweredQuestionIds.map(id => (
                                         <li key={id}><SingleQuestion id={id}/></li>
                                     ))}
                                 </ul>
                             </Tab>
                             <Tab eventKey="answered" title="Answered Questions">
-                                <ul className="dashboard-list">
+                                <ul className="dashboard-list list-unstyled">
                                     {this.props.answeredQuestionIds.map(id => (
                                         <li key={id}></li>
                                     ))}

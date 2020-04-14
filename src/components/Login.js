@@ -53,12 +53,14 @@ class Login extends Component {
                                     }
                                 </FormControl>
                             </FormGroup>
+                            <div className="d-flex justify-content-end">
                             <Button
                                 id={"submit"}
                                 type={"submit"}
                                 variant={"primary"}
                                 disabled={!this.state.user}
                                 onClick={this.handleSubmit}>Submit</Button>
+                            </div>
                         </Col>
                     </Row>
                 </Form>

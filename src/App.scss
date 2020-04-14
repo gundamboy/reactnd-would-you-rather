@@ -2,6 +2,13 @@
 @import "~bootstrap/scss/mixins/breakpoints";
 @import "scss/header";
 @import "scss/login";
+@import "scss/dashboard";
+@import "scss/question-cards";
+
+input[type="button"], input[type="button"]:focus, input[type="button"]:active {
+  outline: none;
+  outline: 0;
+}
 
 .App {
   text-align: center;

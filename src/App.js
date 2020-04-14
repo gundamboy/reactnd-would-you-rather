@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import {connect} from "react-redux";
+import LoadingBar from 'react-redux-loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import Dashboard from "./components/Dashboard";
@@ -20,14 +21,17 @@ import QuestionView from "./components/QuestionView";
 class App extends Component {
   componentDidMount() {
       // get the initial data, which allows the app to work
-      this.props.dispatch(handleInitialData());
+      const { dispatch, loading } = this.props
+      if (loading === true) {
+          dispatch(handleInitialData())
+      }
   }
 
   render() {
     return (
         <Router>
             <Header loggedIn={this.props.signedIn}/>
-            {/*put loading bar here*/}
+            <LoadingBar/>
             {
                 !this.props.signedIn ? <Login/> :
                     <>
@@ -44,6 +48,7 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser, users }) {
     return {
+        loading: authedUser === null,
         signedIn: authedUser !== null,
         authedUserName: authedUser ? users[authedUser].name : '',
         authedUserAvatar: authedUser ? users[authedUser].avatarURL : '',

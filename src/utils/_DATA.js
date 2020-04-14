@@ -1,10 +1,17 @@
 import { formatQuestion } from './helpers';
+import fjordAvatar from '../assets/images/fjord.png';
+import beauAvatar from '../assets/images/beau.png';
+import caduceusAvatar from '../assets/images/caduceus.png';
+import calebAvatar from '../assets/images/caleb.png';
+import jesterAvatar from '../assets/images/jester.png';
+import nottAvatar from '../assets/images/nott.png';
+import yashaAvatar from '../assets/images/yasha.png';
 
 let users = {
     fjord: {
         id: 'fjord',
         name: 'Fjord',
-        avatarURL: '../assests/images/fjord.png',
+        avatarURL: fjordAvatar,
         answers: {
             "8xf0y6ziyjabvozdd253nd": 'optionOne',
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -20,7 +27,7 @@ let users = {
     beau: {
         id: 'beau',
         name: 'Baue',
-        avatarURL: '../assests/images/beau.png',
+        avatarURL: beauAvatar,
         answers: {
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
             "vthrdm985a262al8qx3do": 'optionOne',
@@ -32,7 +39,7 @@ let users = {
     caleb: {
         id: 'caleb',
         name: 'Caleb',
-        avatarURL: '../assests/images/caleb.png',
+        avatarURL: calebAvatar,
         answers: {
             "8xf0y6ziyjabvozdd253nd": 'optionTwo',
             "loxhs1bqm25b708cmbf3g": 'optionOne',
@@ -46,7 +53,7 @@ let users = {
     jester: {
         id: 'jester',
         name: 'Jester',
-        avatarURL: '../assests/images/jester.png',
+        avatarURL: jesterAvatar,
         answers: {
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
             "v9qbru7w2jdn7suksenv44": "optionTwo",
@@ -58,7 +65,7 @@ let users = {
     nott: {
         id: 'nott',
         name: 'Nott the Brave',
-        avatarURL: '../assests/images/nott.png',
+        avatarURL: nottAvatar,
         answers: {
             "vthrdm985a262al8qx3do": 'optionTwo',
             "gbpjmybkp7cj2z8kbfj6dq": 'optionTwo',
@@ -69,7 +76,7 @@ let users = {
     caduceus: {
         id: 'caduceus',
         name: 'Caduceus',
-        avatarURL: '../assests/images/caduceus.png',
+        avatarURL: caduceusAvatar,
         answers: {
             "xj352vofupe1dqz9emx13r": 'optionOne',
             "v9qbru7w2jdn7suksenv44": "optionOne"
@@ -79,7 +86,7 @@ let users = {
     yasha: {
         id: 'yasha',
         name: 'Yasha',
-        avatarURL: '../assests/images/yasha.png',
+        avatarURL: yashaAvatar,
         answers: {
             "xj352vofupe1dqz9emx13r": 'optionOne',
             "gj52f6pxz2vj24cmhsxv96": 'optionOne',
