@@ -11,6 +11,7 @@ let users = {
     fjord: {
         id: 'fjord',
         name: 'Fjord',
+        characterClass: 'Fighter',
         avatarURL: fjordAvatar,
         answers: {
             "8xf0y6ziyjabvozdd253nd": 'optionOne',
@@ -27,6 +28,7 @@ let users = {
     beau: {
         id: 'beau',
         name: 'Baue',
+        characterClass: 'Monk',
         avatarURL: beauAvatar,
         answers: {
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -39,6 +41,7 @@ let users = {
     caleb: {
         id: 'caleb',
         name: 'Caleb',
+        characterClass: 'Wizard',
         avatarURL: calebAvatar,
         answers: {
             "8xf0y6ziyjabvozdd253nd": 'optionTwo',
@@ -53,6 +56,7 @@ let users = {
     jester: {
         id: 'jester',
         name: 'Jester',
+        characterClass: 'Cleric',
         avatarURL: jesterAvatar,
         answers: {
             "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -65,6 +69,7 @@ let users = {
     nott: {
         id: 'nott',
         name: 'Nott the Brave',
+        characterClass: 'Rogue',
         avatarURL: nottAvatar,
         answers: {
             "vthrdm985a262al8qx3do": 'optionTwo',
@@ -76,6 +81,7 @@ let users = {
     caduceus: {
         id: 'caduceus',
         name: 'Caduceus',
+        characterClass: 'Cleric',
         avatarURL: caduceusAvatar,
         answers: {
             "xj352vofupe1dqz9emx13r": 'optionOne',
@@ -86,6 +92,7 @@ let users = {
     yasha: {
         id: 'yasha',
         name: 'Yasha',
+        characterClass: 'Barbarian',
         avatarURL: yashaAvatar,
         answers: {
             "xj352vofupe1dqz9emx13r": 'optionOne',
@@ -152,7 +159,7 @@ let questions = {
     "vthrdm985a262al8qx3do": {
         id: 'vthrdm985a262al8qx3do',
         author: 'nott',
-        timestamp: 1489579767190,
+        timestamp: 1489579767080,
         optionOne: {
             votes: ['beau'],
             text: 'kill the vampire warlord who has killed thousands of innocents',
@@ -165,7 +172,7 @@ let questions = {
     "xj352vofupe1dqz9emx13r": {
         id: 'xj352vofupe1dqz9emx13r',
         author: 'beau',
-        timestamp: 1493579767190,
+        timestamp: 1493579767090,
         optionOne: {
             votes: ['fjord', 'caduceus'],
             text: 'lose your new +1 sword to its "rightful" owners',
@@ -178,7 +185,7 @@ let questions = {
     "gj52f6pxz2vj24cmhsxv96": {
         id: 'gj52f6pxz2vj24cmhsxv96',
         author: 'yasha',
-        timestamp: 1493579767190,
+        timestamp: 1493579767180,
         optionOne: {
             votes: ['yasha'],
             text: 'punch a beholder in its big eye',
@@ -191,7 +198,7 @@ let questions = {
     "a9sz67yp3kxxxk8s38gnux": {
         id: 'a9sz67yp3kxxxk8s38gnux',
         author: 'nott',
-        timestamp: 1493579767190,
+        timestamp: 1493579767170,
         optionOne: {
             votes: [],
             text: 'Have fingers for legs',
@@ -204,7 +211,7 @@ let questions = {
     "v9qbru7w2jdn7suksenv44": {
         id: 'v9qbru7w2jdn7suksenv44',
         author: 'caduceus',
-        timestamp: 1493579767190,
+        timestamp: 1493579767160,
         optionOne: {
             votes: ['caduceus'],
             text: 'see a purple cow',
@@ -217,7 +224,7 @@ let questions = {
     "wmeycdnesgkpj7swubmga2": {
         id: 'wmeycdnesgkpj7swubmga2',
         author: 'jester',
-        timestamp: 1493579767190,
+        timestamp: 1493579767150,
         optionOne: {
             votes: ['yasha', 'fjord'],
             text: 'be a dragon',
@@ -230,7 +237,7 @@ let questions = {
     "gbpjmybkp7cj2z8kbfj6dq": {
         id: 'gbpjmybkp7cj2z8kbfj6dq',
         author: 'beau',
-        timestamp: 1493579767190,
+        timestamp: 1493579767140,
         optionOne: {
             votes: ['yasha'],
             text: 'be engulfed by a gelatinous cube',
@@ -243,7 +250,7 @@ let questions = {
     "djgzuxdmncqaeu2anzg2vz": {
         id: 'djgzuxdmncqaeu2anzg2vz',
         author: 'jester',
-        timestamp: 1493579767190,
+        timestamp: 1493579767130,
         optionOne: {
             votes: [],
             text: 'fight 10 1ft tall rabid ducks',
@@ -256,7 +263,7 @@ let questions = {
     "xdzbs7cd69dn57wy9x2pax": {
         id: 'xdzbs7cd69dn57wy9x2pax',
         author: 'fjord',
-        timestamp: 1493579767190,
+        timestamp: 1493579767120,
         optionOne: {
             votes: [],
             text: 'use a sword',
@@ -269,7 +276,7 @@ let questions = {
     "th9twwf68z66puf2rs5tj4": {
         id: 'th9twwf68z66puf2rs5tj4',
         author: 'nott',
-        timestamp: 1493579767190,
+        timestamp: 1493579767110,
         optionOne: {
             votes: ['fjord', 'caleb', 'beau', 'nott'],
             text: 'take a shot for every time you made a bad decision',

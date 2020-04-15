@@ -1,6 +1,7 @@
 import React from 'react';
+import {connect} from "react-redux";
 import {Col, Container, Row} from "react-bootstrap";
-import AnsweringAQuestionView from "./AnsweringAQuestionView";
+import SingleQuestion from "./SingleQuestion";
 
 const QuestionView = (props) => {
     return (
@@ -8,7 +9,7 @@ const QuestionView = (props) => {
             <Row>
                 <Col>
                     <div className="needs-an-answer-wrapper">
-                        <AnsweringAQuestionView id={props.match.params.id} />
+                        <SingleQuestion id={props.match.params.id} answerView/>
                     </div>
                 </Col>
             </Row>
@@ -16,4 +17,4 @@ const QuestionView = (props) => {
     );
 };
 
-export default QuestionView;
+export default connect()(QuestionView);

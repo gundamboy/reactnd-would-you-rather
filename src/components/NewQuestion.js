@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+import {Col, Container, Row} from "react-bootstrap";
 
 //TODO: create the new question view
 class NewQuestion extends Component {
     render() {
         return (
-            <div>
-                New Question
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }

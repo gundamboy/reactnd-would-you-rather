@@ -25,7 +25,6 @@ export function getQuestions () {
 
 
 export function saveQuestion (info) {
-    //console.log('saving', info)
     return _saveQuestion(info)
 }
 

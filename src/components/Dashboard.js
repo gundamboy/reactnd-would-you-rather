@@ -9,9 +9,6 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { question, author, authedUserDetails, id, detailed } = this.props;
-
-        console.log('props: ', this.props);
         return (
             <Container>
                 <Row>
@@ -20,14 +17,18 @@ class Dashboard extends Component {
                             <Tab eventKey="unanswered" title="Unanswered Questions">
                                 <ul className="dashboard-list list-unstyled">
                                     {this.props.unansweredQuestionIds.map(id => (
-                                        <li key={id}><SingleQuestion id={id}/></li>
+                                        <li key={id}>
+                                            <SingleQuestion id={id}/>
+                                        </li>
                                     ))}
                                 </ul>
                             </Tab>
                             <Tab eventKey="answered" title="Answered Questions">
                                 <ul className="dashboard-list list-unstyled">
                                     {this.props.answeredQuestionIds.map(id => (
-                                        <li key={id}></li>
+                                        <li key={id}>
+                                            <SingleQuestion id={id} answered/>
+                                        </li>
                                     ))}
                                 </ul>
                             </Tab>
@@ -39,12 +40,7 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = ({questions, authedUser, users}) => {
-    // unansweredQuestions is now accessible in this.props
-    // connect gives us the store. The store sees the reducer, and the reducer sees the action
-    // the action is the logic, sending the data to the reducer, and the reducer sending it to the store
-
-
+function mapStateToProps ({ questions, authedUser, users }) {
     const answeredQuestionIds = Object.keys(users[authedUser].answers)
         .sort((a,b)=>questions[b].timestamp-questions[a].timestamp);
 
@@ -56,6 +52,6 @@ const mapStateToProps = ({questions, authedUser, users}) => {
         answeredQuestionIds,
         unansweredQuestionIds
     }
-};
+}
 
 export default connect(mapStateToProps)(Dashboard);

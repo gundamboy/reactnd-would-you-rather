@@ -9,6 +9,33 @@ export const getQuestions = (questions) => {
     }
 };
 
+export function saveAnswer(authedUser, qid, answer) {
+    return {
+        type: ADD_ANSWER,
+        authedUser,
+        qid,
+        answer
+    }
+}
+
+export function handleAddQuestionAnswer(qid, answer) {
+    return (dispatch, getState) => {
+        const { authedUser } = getState();
+
+        dispatch(showLoading());
+
+        return saveQuestionAnswer({
+            authedUser,
+            qid,
+            answer
+        }).then(() => {
+            dispatch(saveAnswer(authedUser, qid, answer))
+        }).then(() => {
+            dispatch(hideLoading())
+        });
+    }
+}
+
 export const addQuestion = (question) => {
     return {
         type: ADD_QUESTION,
@@ -29,31 +56,8 @@ export const handleAddQuestion = (optionOne, optionTwo) => {
             author: authedUser
         }).then((question) => {
             dispatch(addQuestion(question))
-        }).then(() => dispatch(hideLoading()));
+        }).then(() => {
+            dispatch(hideLoading())
+        });
     }
 };
-
-export function addAnswer(authedUser, qid, answer) {
-    return {
-        type: ADD_ANSWER,
-        authedUser,
-        qid,
-        answer
-    }
-}
-
-export function handleAddQuestionAnswer(qid, answer) {
-    return (dispatch, getState) => {
-        const { authedUser } = getState();
-
-        dispatch(showLoading());
-
-        return saveQuestionAnswer({
-            authedUser,
-            qid,
-            answer
-        })
-            .then(() => dispatch(addAnswer(authedUser, qid, answer)))
-            .then(() => dispatch(hideLoading()));
-    }
-}

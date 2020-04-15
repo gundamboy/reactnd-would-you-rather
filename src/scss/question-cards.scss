@@ -108,7 +108,7 @@
 
         .option-button {
           margin: 0;
-          padding: 1.5em 0;
+          padding: 1.5em 2em;
           background: none;
           border: none;
           color: #212529;
@@ -175,9 +175,8 @@
       }
 
 
-      &.submit-row {
+      .submit-row {
         transition: all, 0.5s, ease-in-out;
-        height: 0;
 
         .submit-answer-button {
           border-radius: 0;

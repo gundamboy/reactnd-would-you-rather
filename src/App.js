@@ -12,11 +12,7 @@ import Header from "./components/Header"
 import {handleInitialData} from "./actions/actions-shared";
 import QuestionView from "./components/QuestionView";
 
-//TODO: Add Login
-//TODO: Add Logout
 //TODO: Need a 404 component
-//TODO: Need a Header component with a nav bar
-//TODO:
 
 class App extends Component {
   componentDidMount() {
@@ -30,14 +26,22 @@ class App extends Component {
   render() {
     return (
         <Router>
-            <Header loggedIn={this.props.signedIn}/>
             <LoadingBar/>
+            <Header
+                loggedIn={this.props.signedIn}
+                username={this.props.authedUserName}
+                avatar={this.props.authedUserAvatar}
+                characterClass={this.props.characterClass}
+            />
             {
-                !this.props.signedIn ? <Login/> :
+                !this.props.signedIn
+                    ?
+                    <Login/>
+                    :
                     <>
                     <Route exact path='/' component={Dashboard} />
                     <Route path='/question/:id' component={QuestionView} />
-                    <Route path='/add-new-question' component={NewQuestion} />
+                    <Route path='/add' component={NewQuestion} />
                     <Route path='/leaderboard' component={Leaderboard} />
                     </>
             }
@@ -52,6 +56,7 @@ function mapStateToProps ({ authedUser, users }) {
         signedIn: authedUser !== null,
         authedUserName: authedUser ? users[authedUser].name : '',
         authedUserAvatar: authedUser ? users[authedUser].avatarURL : '',
+        characterClass: authedUser ? users[authedUser].characterClass : ''
     }
 }
 
