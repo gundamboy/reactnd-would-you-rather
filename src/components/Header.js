@@ -23,12 +23,9 @@ class Header extends Component {
         const { loggedIn, username, avatar, characterClass } = this.props;
         return (
             <header>
-                <Link to='/' exact="true">
-                    Home
-                </Link>
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand>
-                        Logo Here
+                        Would You Rather...
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse>

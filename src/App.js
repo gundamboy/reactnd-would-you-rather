@@ -36,7 +36,9 @@ class App extends Component {
             {
                 !this.props.signedIn
                     ?
+                    <>
                     <Login/>
+                    </>
                     :
                     <>
                     <Route exact path='/' component={Dashboard} />

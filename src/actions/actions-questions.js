@@ -43,7 +43,7 @@ export const addQuestion = (question) => {
     }
 };
 
-export const handleAddQuestion = (optionOne, optionTwo) => {
+export const handleAddQuestion = (optionOneText, optionTwoText) => {
     return (dispatch, getState) => {
         const { authedUser } = getState();
 
@@ -51,10 +51,12 @@ export const handleAddQuestion = (optionOne, optionTwo) => {
         dispatch(showLoading());
 
         return saveQuestion({
-            optionOne,
-            optionTwo,
+            optionOneText,
+            optionTwoText,
             author: authedUser
         }).then((question) => {
+
+            console.log("action - handleAddQuestion question: ", question);
             dispatch(addQuestion(question))
         }).then(() => {
             dispatch(hideLoading())

@@ -9,6 +9,7 @@ export default function questions(state = {}, action) {
             };
         case ADD_QUESTION:
             const { question } = action
+            console.log("ADD_QUESTION REDUCER: ", question);
             return {
                 ...state,
                 [action.question.id] : question

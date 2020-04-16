@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from "../actions/actions-authedUser";
-import {Container, Col, Row, Form, FormGroup, FormLabel, FormControl, Button} from "react-bootstrap";
+import {Container, Col, Row, Form, FormGroup, FormLabel, FormControl, Button, Card} from "react-bootstrap";
 import SingleQuestion from "./SingleQuestion";
 
 //TODO: create login component
@@ -36,31 +36,36 @@ class Login extends Component {
         return (
             <Container>
                 <Form>
-                    <Row>
-                        <Col>
-                            <FormGroup>
-                                <FormLabel>Select A user from the list</FormLabel>
-                                <FormControl as={"select"}
-                                             value={this.state.user}
-                                             name={"selected-user"}
-                                             id={"user"}
-                                             onChange={this.handleSelectedUser}>
-                                    <option></option>
-                                    {users &&
-                                    Object.keys(users).map(user => (
-                                        <option key={user} value={user}>{users[user].name}</option>
-                                    ))
-                                    }
-                                </FormControl>
-                            </FormGroup>
-                            <div className="d-flex justify-content-end">
-                            <Button
-                                id={"submit"}
-                                type={"submit"}
-                                variant={"primary"}
-                                disabled={!this.state.user}
-                                onClick={this.handleSubmit}>Submit</Button>
-                            </div>
+                    <Row className="justify-content-center">
+                        <Col md={6}>
+                            <Card>
+                                <Card.Header><h4>Login</h4></Card.Header>
+                                <Card.Body>
+                                    <FormGroup>
+                                        <FormLabel>Select A user from the list</FormLabel>
+                                        <FormControl as={"select"}
+                                                     value={this.state.user}
+                                                     name={"selected-user"}
+                                                     id={"user"}
+                                                     onChange={this.handleSelectedUser}>
+                                            <option></option>
+                                            {users &&
+                                            Object.keys(users).map(user => (
+                                                <option key={user} value={user}>{users[user].name}</option>
+                                            ))
+                                            }
+                                        </FormControl>
+                                    </FormGroup>
+                                    <div className="text-right">
+                                        <Button
+                                            id={"submit"}
+                                            type={"submit"}
+                                            variant={"primary"}
+                                            disabled={!this.state.user}
+                                            onClick={this.handleSubmit}>Submit</Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
                         </Col>
                     </Row>
                 </Form>
