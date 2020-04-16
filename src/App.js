@@ -11,6 +11,8 @@ import Leaderboard from "./components/Leaderboard";
 import Header from "./components/Header"
 import {handleInitialData} from "./actions/actions-shared";
 import QuestionView from "./components/QuestionView";
+import {ProgressBar} from "react-bootstrap";
+
 
 //TODO: Need a 404 component
 

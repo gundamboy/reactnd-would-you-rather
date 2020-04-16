@@ -1,0 +1,62 @@
+.leaderboard {
+  .progress-bar-row {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #cccccc;
+
+    .progress-wrap {
+
+      margin-bottom: 15px;
+
+      .progress {
+        height: 30px;
+
+        .progress-bar {
+          &.beau {
+            background-color: #007bff;
+          }
+
+          &.caduceus {
+            background-color: #007bff;
+          }
+
+          &.caleb {
+            background-color: #007bff;
+          }
+
+          &.fjord {
+            background-color: #007bff;
+          }
+
+          &.jester {
+            background-color: #007bff;
+          }
+
+          &.nott {
+            background-color: #007bff;
+          }
+
+          &.yasha {
+            background-color: #007bff;
+          }
+        }
+
+      }
+    }
+
+    .user {
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .avatar-wrap {
+        margin-right: 20px;
+
+        .avatar {
+          width: 75px;
+        }
+      }
+    }
+  }
+}
