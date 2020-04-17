@@ -1,62 +1,39 @@
 .leaderboard {
-  .progress-bar-row {
-    margin-bottom: 2em;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #cccccc;
-
-    .progress-wrap {
-
-      margin-bottom: 15px;
-
-      .progress {
-        height: 30px;
-
-        .progress-bar {
-          &.beau {
-            background-color: #007bff;
-          }
-
-          &.caduceus {
-            background-color: #007bff;
-          }
-
-          &.caleb {
-            background-color: #007bff;
-          }
-
-          &.fjord {
-            background-color: #007bff;
-          }
-
-          &.jester {
-            background-color: #007bff;
-          }
-
-          &.nott {
-            background-color: #007bff;
-          }
-
-          &.yasha {
-            background-color: #007bff;
-          }
-        }
-
-      }
+  .leaderboard-table {
+    th.rank-column {
+      width: 90px;
     }
 
-    .user {
-      height: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+    tr.active {
+      background: #ffe2e2;
+    }
 
-      .avatar-wrap {
-        margin-right: 20px;
+  }
 
-        .avatar {
-          width: 75px;
-        }
+  .userInfo-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .avatar {
+      width: 65px;
+      margin-right: 20px;
+    }
+
+    .author-meta {
+      .author-name,
+      .character-class {
+        margin-bottom: 0;
+      }
+
+      .author-name {
+
+      }
+
+      .character-class {
+
       }
     }
   }
+
 }

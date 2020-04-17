@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Col, Container, ProgressBar, Row} from "react-bootstrap";
 import {connect} from "react-redux";
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import BootstrapTable from 'react-bootstrap-table-next';
+import authedUser from "../reducers/reducer-authedUser";
 
 //TODO: create the leader board view
 class Leaderboard extends Component {
@@ -10,12 +13,101 @@ class Leaderboard extends Component {
 
     }
 
-    sortQuestions = () => {
 
+    mapTable = (leaderboardData) => {
+        let rows = [];
+
+        leaderboardData.forEach((user, idx) => {
+            let cell = {
+                "rowId": user.id,
+                "rank": idx+1,
+                "name": <><div className="userInfo-wrapper">
+                            <img className="avatar" src={user.avatarURL} alt={`${user.name}'s Profile Image`}/>
+                            <div className="author-meta">
+                                <p className="author-name">{user.name}</p>
+                                <p className="character-class">{user.characterClass}</p>
+                            </div>
+                </div></>,
+                "created": user.createdQuestions,
+                "answered": user.answeredQuestions
+            }
+
+            rows.push(cell);
+        });
+
+        return rows;
     }
 
     render() {
         console.log("leaderboard props: ", this.props);
+
+        let tableData = [{
+            "rank": "",
+            "name": "",
+            "created": "",
+            "answered": "",
+        }];
+        const columns = [
+            {
+                dataField: 'rank',
+                text: 'Rank',
+                headerClasses: 'rank-column',
+                sort: true
+            },
+            {
+                dataField: 'name',
+                text: 'Name',
+                headerClasses: 'name-column',
+                sort: true
+            },
+            {
+                dataField: 'created',
+                text: 'Created Questions',
+                headerClasses: 'created-column',
+                sort: true
+            },
+            {
+                dataField: 'answered',
+                text: 'Answered Questions',
+                headerClasses: 'answered-column',
+                sort: true
+            }
+        ];
+        const defaultSorted = [{
+           dataField: 'answered',
+           order: 'desc'
+        }];
+        let content = (
+            <p>Sorry, there is no data for this yet.</p>
+        );
+
+        if (this.props.leaderboardData.length) {
+            const { authedUser, leaderboardData} = this.props;
+
+            tableData = this.mapTable(leaderboardData);
+
+            const activeClass = (row, rowIndex) => {
+                return row.rowId === authedUser ? 'active' : '';
+            };
+
+            content = (
+                <BootstrapTable
+                    keyField='rank'
+                    classes="leaderboard-table"
+                    bootstrap4
+                    columns={columns}
+                    data={tableData}
+                    defaultSorted={defaultSorted}
+                    hover
+                    responsive
+                    rowClasses={activeClass}
+                    noDataIndication={() => {
+                        return "Sorry, there is no data for this yet."
+                    }}
+                />
+            );
+        }
+
         return (
             <Container className={"leaderboard"}>
                 <Row>
@@ -23,34 +115,11 @@ class Leaderboard extends Component {
                         <h4>Leaderboard</h4>
                     </Col>
                 </Row>
-                {this.props.leaderboardData ?
-                    this.props.leaderboardData.map(user => (
-                        <Row key={user.id} className="progress-bar-row">
-                            <Col md={4} lg={3}>
-                                <div className={"user"}>
-                                    <div className="avatar-wrap">
-                                        <img src={user.avatarURL} className={"avatar"} alt={`${user.name}'s Profile Image`}/>
-                                    </div>
-                                    <p className={user.id}>{user.name} <br/>{user.characterClass}</p>
-                                </div>
-
-                            </Col>
-                            <Col md={8} lg={9}>
-                                <div className="progress-wrap">
-                                    <span>Answered Questions:</span>
-                                    <ProgressBar className={user.id} now={user.answeredQuestions}
-                                                 label={`${user.answeredQuestions}`}/>
-                                </div>
-                                <div className="progress-wrap">
-                                    <span>Asked Questions:</span>
-                                    <ProgressBar className={user.id} now={user.createdQuestions}
-                                                 label={`${user.createdQuestions}`}/>
-                                </div>
-                            </Col>
-                        </Row>
-                    ))
-                :
-                "No Data"}
+                <Row>
+                    <Col>
+                        {content}
+                    </Col>
+                </Row>
             </Container>
         );
     }
@@ -65,10 +134,12 @@ function mapStateToProps ({ authedUser, users, questions }) {
         answeredQuestions: Object.keys(users[user].answers).length,
         createdQuestions: Object.keys(questions).filter(q => questions[q].author === user).length
     }))
-        .sort((a,b) => (b.answeredQuestions+b.createdQuestions)-(a.answeredQuestions+a.createdQuestions));
+        .sort((a,b) => (b.createdQuestions)-(a.createdQuestions));
 
     return {
         authedUser,
+        users,
+        questions,
         leaderboardData
     }
 }
