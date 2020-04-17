@@ -1,13 +1,33 @@
 .leaderboard {
   .leaderboard-table {
+    background: lighten($leaderboard_table_bg, 22%);
+    border-color: $leaderboard_table_border_color;
+
+    thead {
+      background: lighten($leaderboard_table_header_bg, 18%);
+      color: $text_color;
+
+      th {
+        border-color: $leaderboard_table_border_color;
+      }
+    }
+
     th.rank-column {
       width: 90px;
     }
 
-    tr.active {
-      background: #ffe2e2;
-    }
+    tr {
+      &.active {
+        background: lighten($leaderboard_table_bg, 16%);
+      }
 
+      td {
+        border-color: $leaderboard_table_border_color;
+        font-size: 1.2rem;
+        vertical-align: middle;
+        padding-left: 1rem;
+      }
+    }
   }
 
   .userInfo-wrapper {

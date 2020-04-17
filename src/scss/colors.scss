@@ -1,0 +1,70 @@
+$main_background: #eae7dc;
+$color1: #d8c3a5;
+$site_title: #e98074;
+$text_color: #8e8d8a;
+$header_navlink_color: darken(#8e8d8a, 30%);
+$link_color: #e98074;
+$hover_accent: #e85a4f;
+$button_bg_color: lighten(#d8c3a5, 8%);
+$button_border: lighten(#d8c3a5, 8%);
+$button_disabled: lighten(#8e8d8a, 2%);
+$button_disabled_border: lighten(#8e8d8a, 2%);
+$form_control_outline: #8e8d8a;
+$text_color: #8e8d8a;
+$tabs_bg_color: #d8c3a5;
+$choice_btn_bg_color_hover: #d8c3a5;
+$cancel_btn_bg_color: lighten(#e98074, 8%);
+$cancel_btn_border_color: lighten(#e98074, 8%);
+$submit_btn_bg_color: lighten(#d8c3a5, 8%);
+$submit_btn_border_color: lighten(#d8c3a5, 8%);
+$leaderboard_table_bg: #d8c3a5;
+$leaderboard_table_header_bg: #d8c3a5;
+$leaderboard_table_border_color: #d8c3a5;
+$table_active_user_bg_color: #e98074;
+$selected_answer_color: #e85a4f;
+
+body {
+  background: $main_background;
+  color: $text_color;
+}
+
+a {
+  color: $link_color;
+
+  &:hover, &:focus {
+    color: $hover_accent;
+  }
+}
+
+.form-control {
+  border: 1px solid $form_control_outline;
+
+  &:focus {
+    border-color: darken($form_control_outline, 20%);
+    box-shadow: 0 0 0 0.5px $form_control_outline;
+  }
+}
+
+.btn-primary {
+  background-color: $button_bg_color;
+  border-color: $button_border;
+  color: darken($text_color, 20%);
+
+  &active, &:hover, &:focus {
+    background-color: darken($button_bg_color, 5%);
+    border-color: darken($button_border, 5%);
+    color: darken($text_color, 20%);
+  }
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: $button_disabled;
+  border-color: $button_disabled_border;
+}
+
+.card {
+
+  .card-header {}
+  .card-body {}
+  .card-footer {}
+}

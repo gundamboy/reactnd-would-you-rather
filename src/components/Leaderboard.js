@@ -39,7 +39,6 @@ class Leaderboard extends Component {
     }
 
     render() {
-        console.log("leaderboard props: ", this.props);
 
         let tableData = [{
             "rank": "",
@@ -47,6 +46,7 @@ class Leaderboard extends Component {
             "created": "",
             "answered": "",
         }];
+
         const columns = [
             {
                 dataField: 'rank',
@@ -73,10 +73,7 @@ class Leaderboard extends Component {
                 sort: true
             }
         ];
-        const defaultSorted = [{
-           dataField: 'answered',
-           order: 'desc'
-        }];
+
         let content = (
             <p>Sorry, there is no data for this yet.</p>
         );
@@ -97,9 +94,9 @@ class Leaderboard extends Component {
                     bootstrap4
                     columns={columns}
                     data={tableData}
-                    defaultSorted={defaultSorted}
                     hover
                     responsive
+                    condensed
                     rowClasses={activeClass}
                     noDataIndication={() => {
                         return "Sorry, there is no data for this yet."
@@ -112,7 +109,7 @@ class Leaderboard extends Component {
             <Container className={"leaderboard"}>
                 <Row>
                     <Col>
-                        <h4>Leaderboard</h4>
+                        <h4 className="page-title">Leaderboard</h4>
                     </Col>
                 </Row>
                 <Row>
@@ -133,8 +130,7 @@ function mapStateToProps ({ authedUser, users, questions }) {
         characterClass: users[user].characterClass,
         answeredQuestions: Object.keys(users[user].answers).length,
         createdQuestions: Object.keys(questions).filter(q => questions[q].author === user).length
-    }))
-        .sort((a,b) => (b.createdQuestions)-(a.createdQuestions));
+    })).sort((a,b) => (b.answeredQuestions+b.createdQuestions)-(a.answeredQuestions+a.createdQuestions));
 
     return {
         authedUser,

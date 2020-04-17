@@ -11,10 +11,7 @@ import Leaderboard from "./components/Leaderboard";
 import Header from "./components/Header"
 import {handleInitialData} from "./actions/actions-shared";
 import QuestionView from "./components/QuestionView";
-import {ProgressBar} from "react-bootstrap";
 
-
-//TODO: Need a 404 component
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +26,7 @@ class App extends Component {
     return (
         <Router>
             <LoadingBar/>
-            <Header
-                loggedIn={this.props.signedIn}
-                username={this.props.authedUserName}
-                avatar={this.props.authedUserAvatar}
-                characterClass={this.props.characterClass}
-            />
+
             {
                 !this.props.signedIn
                     ?
@@ -43,6 +35,12 @@ class App extends Component {
                     </>
                     :
                     <>
+                    <Header
+                        loggedIn={this.props.signedIn}
+                        username={this.props.authedUserName}
+                        avatar={this.props.authedUserAvatar}
+                        characterClass={this.props.characterClass}
+                    />
                     <Route exact path='/' component={Dashboard} />
                     <Route path='/question/:id' component={QuestionView} />
                     <Route path='/add' component={NewQuestion} />

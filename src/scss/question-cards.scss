@@ -5,6 +5,9 @@
 }
 
 .card {
+  background-color: lighten($tabs_bg_color, 22%);
+  border-color: $tabs_bg_color;
+
   &.in-list,
   &.answering {
     .author-meta {
@@ -44,6 +47,7 @@
     }
 
     .card-footer {
+      background-color: lighten($tabs_bg_color, 18%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -98,6 +102,11 @@
     }
 
     .answer-wrapper {
+
+      &.hide {
+        display: none;
+      }
+
       position: relative;
 
       .choice {
@@ -105,6 +114,7 @@
         justify-content: center;
         align-items: center;
         z-index: 1;
+        height: 100%;
 
         .option-button {
           margin: 0;
@@ -114,9 +124,18 @@
           color: #212529;
           width: 100%;
           border-radius: 0;
+          height: 100%;
+
+          &#optionOne {
+            border-bottom: 1px solid $tabs_bg_color;
+
+            @include media-breakpoint-up(md) {
+              border-bottom: none;
+            }
+          }
 
           &:hover {
-            background: rgb(253, 224, 224);
+            background: lighten($choice_btn_bg_color_hover, 14%);
           }
 
           &:focus {
@@ -128,11 +147,9 @@
           }
         }
 
-
-
         @include media-breakpoint-up(md) {
           &.choice-one {
-            border-right: 1px solid #cccccc;
+            border-right: 1px solid $tabs_bg_color;
           }
 
           p {
@@ -165,6 +182,7 @@
 
     .card-footer {
       padding: 0;
+      border-top-color: $tabs_bg_color;
 
       .row {
         margin: 0;
@@ -176,16 +194,28 @@
 
 
       .submit-row {
+        &.hide {
+          display: none;
+        }
+
         transition: all, 0.5s, ease-in-out;
 
         .submit-answer-button {
           border-radius: 0;
-        }
+          background-color: $submit_btn_bg_color;
+          border-color: $submit_btn_border_color;
+          color: darken($text_color, 50%);
 
-        .cancel-button {
-          border-radius: 0;
-        }
+          &:hover {
+            background-color: darken($submit_btn_bg_color, 10%);
+            border-color: darken($submit_btn_border_color, 10%);
+          }
 
+          &:focus {
+            box-shadow:none !important;
+            outline: 0px !important;
+          }
+        }
 
         @include media-breakpoint-up(md) {
           .submit-answer-button {
@@ -197,6 +227,56 @@
           }
         }
       }
+    }
+
+    .results-row {
+      display: none;
+
+      &.show {
+        display: block;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      div[class^="col"] {
+        border-bottom: 1px solid $tabs_bg_color;
+      }
+
+      .vote-wrapper {
+        padding: 0.5em 0.5em 0.5em 0.75em;
+
+        .h6 {
+          padding: 0;
+          margin-bottom: 10px;
+        }
+
+        &.selected-answer {
+          p {
+            color: $selected_answer_color;
+          }
+        }
+
+        @include media-breakpoint-up(md) {text-align: center;text-align: center;
+          text-align: center;
+        }
+      }
+
+      @include media-breakpoint-up(md) {
+        .row {
+
+          div[class^="col"] {
+            border-bottom: none;
+            border-right: 1px solid $tabs_bg_color;
+
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+      }
+
     }
 
   }

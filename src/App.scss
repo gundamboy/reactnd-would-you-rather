@@ -1,11 +1,23 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/scss/mixins/breakpoints";
+@import "src/scss/fonts";
+@import "src/scss/colors";
 @import "scss/header";
 @import "scss/login";
 @import "scss/dashboard";
 @import "scss/question-cards";
 @import "scss/new-question";
 @import "scss/leaderboard";
+@import "scss/page-not-found";
+
+.page-title {
+  margin-bottom: 1em;
+  color: $site_title;
+  letter-spacing: 3px;
+  font-family: CervoW01-Light, Roboto, Ubunto, sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
 
 input[type="button"], input[type="button"]:focus, input[type="button"]:active {
   outline: none;

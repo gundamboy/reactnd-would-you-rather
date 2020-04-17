@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavLink} from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import {IndexLinkContainer, LinkContainer} from "react-router-bootstrap";
 import {connect} from "react-redux";
 import {setAuthedUser} from "../actions/actions-authedUser";
 import {Link, withRouter} from "react-router-dom";
@@ -23,23 +23,23 @@ class Header extends Component {
         const { loggedIn, username, avatar, characterClass } = this.props;
         return (
             <header>
-                <Navbar bg="light" expand="lg">
+                <>
+                {loggedIn &&
+                <Navbar expand="lg">
                     <Navbar.Brand>
-                        Would You Rather...
+                        Would You Rather?
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse>
-                        {loggedIn &&
-                        <>
                         <Nav className="mr-auto">
-                            <LinkContainer to="/" >
-                                <NavLink>Dashboard</NavLink>
+                            <IndexLinkContainer  eventKey={1} to="/" activeClassName="active">
+                                <NavLink active={false}>Dashboard</NavLink>
+                            </IndexLinkContainer >
+                            <LinkContainer eventKey={2} to="/add">
+                                <NavLink active={false}>New Question</NavLink>
                             </LinkContainer>
-                            <LinkContainer to="/add">
-                                <NavLink>New Question</NavLink>
-                            </LinkContainer>
-                            <LinkContainer to="/leaderboard">
-                                <NavLink>Leaderboard</NavLink>
+                            <LinkContainer eventKey={3} to="/leaderboard">
+                                <NavLink active={false}>Leaderboard</NavLink>
                             </LinkContainer>
                         </Nav>
                         <Navbar.Text>
@@ -58,10 +58,12 @@ class Header extends Component {
                                 </LinkContainer>
                             </div>
                         </Navbar.Text>
-                        </>
-                        }
+
+
                     </Navbar.Collapse>
                 </Navbar>
+                }
+                </>
             </header>
         );
     }

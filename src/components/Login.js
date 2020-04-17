@@ -34,38 +34,38 @@ class Login extends Component {
         const { users } = this.props;
 
         return (
-            <Container>
+            <Container className="login">
+                <Row className="justify-content-center">
+                    <Col>
+                        <h1 className="site-title text-center">Would You Rather?</h1>
+                    </Col>
+                </Row>
                 <Form>
                     <Row className="justify-content-center">
                         <Col md={6}>
-                            <Card>
-                                <Card.Header><h4>Login</h4></Card.Header>
-                                <Card.Body>
-                                    <FormGroup>
-                                        <FormLabel>Select A user from the list</FormLabel>
-                                        <FormControl as={"select"}
-                                                     value={this.state.user}
-                                                     name={"selected-user"}
-                                                     id={"user"}
-                                                     onChange={this.handleSelectedUser}>
-                                            <option></option>
-                                            {users &&
-                                            Object.keys(users).map(user => (
-                                                <option key={user} value={user}>{users[user].name}</option>
-                                            ))
-                                            }
-                                        </FormControl>
-                                    </FormGroup>
-                                    <div className="text-right">
-                                        <Button
-                                            id={"submit"}
-                                            type={"submit"}
-                                            variant={"primary"}
-                                            disabled={!this.state.user}
-                                            onClick={this.handleSubmit}>Submit</Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
+                            <FormGroup>
+                                <FormLabel>Select a user from the list</FormLabel>
+                                <FormControl as={"select"}
+                                             value={this.state.user}
+                                             name={"selected-user"}
+                                             id={"user"}
+                                             onChange={this.handleSelectedUser}>
+                                    <option></option>
+                                    {users &&
+                                    Object.keys(users).map(user => (
+                                        <option key={user} value={user}>{users[user].name}</option>
+                                    ))
+                                    }
+                                </FormControl>
+                            </FormGroup>
+                            <div className="text-right">
+                                <Button
+                                    id={"submit"}
+                                    type={"submit"}
+                                    variant={"primary"}
+                                    disabled={!this.state.user}
+                                    onClick={this.handleSubmit}>Submit</Button>
+                            </div>
                         </Col>
                     </Row>
                 </Form>

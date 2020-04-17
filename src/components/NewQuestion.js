@@ -64,32 +64,28 @@ class NewQuestion extends Component {
         }
 
         return (
-            <Container>
+            <Container className="new-question">
                 <Row className="justify-content-center">
                     <Col md={6}>
-                        <Card>
-                            <Card.Header>
-                                <h4>Add a new question</h4>
-                            </Card.Header>
-                            <Card.Body>
-                                <Form className="new-question-form" noValidate onSubmit={this.handleSubmit}>
-                                    <Form.Group className="">
-                                        <Form.Label>Option One</Form.Label>
-                                        <Form.Control type="text" id={"optionOne"} value={optionOne} onChange={this.handleInputChange} placeholder="Option One"/>
-                                    </Form.Group>
+                        <div className="title-wrap">
+                            <h4 className="page-title">Add a new question</h4>
+                        </div>
+                        <Form className="new-question-form" noValidate onSubmit={this.handleSubmit}>
+                            <Form.Group className="">
+                                <Form.Label>Option One</Form.Label>
+                                <Form.Control type="text" id={"optionOne"} value={optionOne} onChange={this.handleInputChange} placeholder="Option One"/>
+                            </Form.Group>
 
-                                    <Form.Group >
-                                        <Form.Label>Option Two</Form.Label>
-                                        <Form.Control type="text" id={"optionTwo"} value={optionTwo} onChange={this.handleInputChange} placeholder="Option Two"/>
-                                    </Form.Group>
+                            <Form.Group >
+                                <Form.Label>Option Two</Form.Label>
+                                <Form.Control type="text" id={"optionTwo"} value={optionTwo} onChange={this.handleInputChange} placeholder="Option Two"/>
+                            </Form.Group>
 
-                                    <div className="text-right">
-                                        <Button className="cancel-button" variant={"secondary"} onClick={this.handleCancel}>Cancel</Button>
-                                        <Button type={"submit"} className="submit-button" disabled={!enableSubmit}>Submit Question</Button>
-                                    </div>
-                                </Form>
-                            </Card.Body>
-                        </Card>
+                            <div className="text-right">
+                                <Button className="cancel-button" variant={"secondary"} onClick={this.handleCancel}>Cancel</Button>
+                                <Button type={"submit"} className="submit-button" disabled={!enableSubmit}>Submit Question</Button>
+                            </div>
+                        </Form>
                     </Col>
                 </Row>
             </Container>

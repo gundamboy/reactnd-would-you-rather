@@ -37,8 +37,12 @@ class SingleQuestion extends Component {
         const { selectedOption } = this.state;
         const { dispatch, id } = this.props;
 
-
-        dispatch(handleAddQuestionAnswer(id, selectedOption));
+        dispatch(handleAddQuestionAnswer(id, selectedOption)).then(() => {
+            this.setState({
+                ...this.state,
+                showResults: true
+            });
+        });
     }
 
     handleCancel = (e) => {
@@ -76,7 +80,7 @@ class SingleQuestion extends Component {
                             </div>
                         </Card.Body>
                         <Card.Footer>
-                            <div className="answer-wrapper">
+                            <div className={this.state.showResults ? "answer-wrapper hide" : "answer-wrapper"}>
                                 <Row>
                                     <Col xs={12} md={6}>
                                         <div className="choice choice-one">
@@ -106,7 +110,7 @@ class SingleQuestion extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className={"submit-row"}>
+                            <div className={this.state.showResults ? "submit-row hide" : "submit-row"}>
                                 <Row>
                                     <Col md={6}>
                                         <Button
@@ -123,7 +127,7 @@ class SingleQuestion extends Component {
                                             className={"cancel-button"}
                                             size="lg"
                                             block
-                                            variant={"info"}
+                                            variant={"secondary"}
                                             enabled={`${this.state.showSubmit}`}
                                             onClick={this.handleCancel}
                                         >Cancel</Button>
@@ -131,19 +135,30 @@ class SingleQuestion extends Component {
                                 </Row>
                             </div>
 
-
-                            <div className={"results-row"}>
+                            <div className={this.state.showResults ? "results-row show" : "results-row"}>
                                 <Row>
                                     <Col md={6}>
-                                        <p>Votes: {question.optionOne.votes.length}<br/>
-                                            Percentage: {((question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
-                                        </p>
+                                        <div className={this.state.selectedOption === "optionOne" ? "vote-wrapper selected-answer" : "vote-wrapper"}>
+                                            <div className="question-text">
+                                                <p className="h6">{question.optionOne.text}</p>
+                                            </div>
+                                            <div className="vote-text">
+                                                <p>Votes: {question.optionOne.votes.length}</p>
+                                                <p>Percentage: {((question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%</p>
+                                            </div>
+                                        </div>
                                     </Col>
 
                                     <Col md={6}>
-                                        <p>Votes: {question.optionTwo.votes.length}<br/>
-                                            Percentage: {((question.optionTwo.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
-                                        </p>
+                                        <div className={this.state.selectedOption === "optionTwo" ? "vote-wrapper selected-answer" : "vote-wrapper"}>
+                                            <div className="question-text">
+                                                <p className="h6">{question.optionOne.text}</p>
+                                            </div>
+                                            <div className="vote-text">
+                                                <p>Votes: {question.optionTwo.votes.length}</p>
+                                                <p>Percentage: {((question.optionTwo.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%</p>
+                                            </div>
+                                        </div>
                                     </Col>
                                 </Row>
                             </div>
