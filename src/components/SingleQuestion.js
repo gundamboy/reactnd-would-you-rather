@@ -52,6 +52,7 @@ class SingleQuestion extends Component {
 
     render() {
         const { question, author, id, answered, answerView } = this.props;
+        console.log("props: ", this.props);
 
         if (!question) {
             return <PageNotFound/>
@@ -134,7 +135,6 @@ class SingleQuestion extends Component {
                                     </Col>
                                 </Row>
                             </div>
-
                             <div className={this.state.showResults ? "results-row show" : "results-row"}>
                                 <Row>
                                     <Col md={6}>
@@ -167,7 +167,7 @@ class SingleQuestion extends Component {
                     </Card>
                     :
                     answered ?
-                        <Card className={"in-list"}>
+                        <Card className={"in-list answered"}>
                             <Card.Body>
                                 <Card.Title>
                                     <div className="userInfo-wrapper">
@@ -181,29 +181,35 @@ class SingleQuestion extends Component {
                                     </div>
                                 </Card.Title>
                                 <p className="lead">{author.name} asks, would you rather:</p>
-
+                            </Card.Body>
+                            <Card.Footer>
                                 <div className={"results-row"}>
                                     <Row>
-                                        <Col md={5}>
-                                            <p className=""><strong>{question.optionOne.text}</strong></p>
-                                            <p>Votes: {question.optionOne.votes.length}<br/>
-                                                Percentage: {((question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
-                                            </p>
+                                        <Col xs={12} md={6}>
+                                            <div className={question.optionOne.votes.includes(this.props.authedUserDetails.id) ? "vote-wrapper option-one selected-answer" : "vote-wrapper option-one"}>
+                                                <p className="answered-question-text-title"><strong>{question.optionOne.text}</strong></p>
+                                                <p>Votes: {question.optionOne.votes.length}<br/>
+                                                    Percentage: {((question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
+                                                </p>
+                                            </div>
                                         </Col>
 
-                                        <Col md={2}>
-                                            <p>OR</p>
-                                        </Col>
-
-                                        <Col md={5}>
-                                            <p className=""><strong>{question.optionTwo.text}</strong></p>
-                                            <p>Votes: {question.optionTwo.votes.length}<br/>
-                                                Percentage: {((question.optionTwo.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
-                                            </p>
+                                        <Col xs={12} md={6}>
+                                            <div className={question.optionTwo.votes.includes(this.props.authedUserDetails.id) ? "vote-wrapper selected-answer" : "vote-wrapper"}>
+                                                <p className="answered-question-text-title"><strong>{question.optionTwo.text}</strong></p>
+                                                <p>Votes: {question.optionTwo.votes.length}<br/>
+                                                    Percentage: {((question.optionTwo.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length)) * 100).toFixed()}%
+                                                </p>
+                                            </div>
                                         </Col>
                                     </Row>
+                                    <div className="middle-circle">
+                                        <div className="span-wrap">
+                                            <span>OR</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </Card.Body>
+                            </Card.Footer>
                         </Card>
                         :
                         <Card className={"in-list"}>

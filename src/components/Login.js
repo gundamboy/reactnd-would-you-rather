@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from "../actions/actions-authedUser";
-import {Container, Col, Row, Form, FormGroup, FormLabel, FormControl, Button, Card} from "react-bootstrap";
-import SingleQuestion from "./SingleQuestion";
+import {Container, Col, Row, Form, FormGroup, FormLabel, FormControl, Button} from "react-bootstrap";
 
-//TODO: create login component
 class Login extends Component {
     constructor(props) {
         super(props);

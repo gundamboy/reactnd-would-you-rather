@@ -26,7 +26,6 @@ class App extends Component {
     return (
         <Router>
             <LoadingBar/>
-
             {
                 !this.props.signedIn
                     ?

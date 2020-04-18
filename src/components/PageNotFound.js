@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 
-//TODO: create 404 page
 class PageNotFound extends Component {
     render() {
         return (

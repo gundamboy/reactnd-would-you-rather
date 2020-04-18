@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {Col, Container, ProgressBar, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {connect} from "react-redux";
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
-import authedUser from "../reducers/reducer-authedUser";
 
 //TODO: create the leader board view
 class Leaderboard extends Component {

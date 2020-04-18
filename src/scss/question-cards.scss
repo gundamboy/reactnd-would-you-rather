@@ -164,8 +164,9 @@
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: 9999;
-        background: #e2e2e2;
-        border: 1px solid #454545;
+        background-color: lighten($tabs_bg_color, 22%);
+        border: 1px solid $text_color;
+        color: $or_circle_color;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -174,8 +175,15 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          font-family: "CervoW01-Light", Roboto, Ubunto, sans-serif;
+          font-size: 1.5rem;letter-spacing: 1px;
           width: 100%;
           height: 100%;
+
+          span {
+            position: relative;
+            top: 2px
+          }
         }
       }
     }
@@ -278,6 +286,97 @@
       }
 
     }
+  }
 
+  &.answered {
+    .card-body{}
+
+    .card-footer {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      @include media-breakpoint-up(md) {
+        display: block;
+      }
+    }
+
+    .results-row {
+      position: relative;
+
+      div[class^="col-"] {
+        padding: 0;
+      }
+
+      .vote-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 0 1em;
+
+        &.option-one {
+          border-bottom: 1px solid $tabs_bg_color;
+          padding: 1em 0 2em;
+
+          @include media-breakpoint-up(md) {
+            border-right: 1px solid $tabs_bg_color;
+            border-bottom: none;
+          }
+        }
+
+        @include media-breakpoint-up(md) {
+          padding: 1em 0;
+        }
+
+        .answered-question-text-title, p {
+          margin-bottom: 0;
+        }
+
+        &.selected-answer {
+          p {
+            color: $selected_answer_color;
+          }
+        }
+      }
+
+      .middle-circle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        background-color: lighten($tabs_bg_color, 22%);
+        border: 1px solid $text_color;
+        color: $or_circle_color;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+
+        @include media-breakpoint-up(md) {
+
+        }
+
+        .span-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: "CervoW01-Light", Roboto, Ubunto, sans-serif;
+          font-size: 1.5rem;letter-spacing: 1px;
+          width: 100%;
+          height: 100%;
+
+          @include media-breakpoint-up(md) {
+
+          }
+
+          span {
+              position: relative;
+              top: 2px
+          }
+        }
+      }
+    }
   }
 }

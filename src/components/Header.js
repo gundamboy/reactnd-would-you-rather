@@ -3,7 +3,7 @@ import {Nav, Navbar, NavLink} from "react-bootstrap";
 import {IndexLinkContainer, LinkContainer} from "react-router-bootstrap";
 import {connect} from "react-redux";
 import {setAuthedUser} from "../actions/actions-authedUser";
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Header extends Component {
     constructor(props) {
