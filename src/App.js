@@ -1,58 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, {Component} from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import {connect} from "react-redux";
+import LoadingBar from 'react-redux-loading';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
+import NewQuestion from "./components/NewQuestion";
+import Leaderboard from "./components/Leaderboard";
+import Header from "./components/Header"
+import {handleInitialData} from "./actions/actions-shared";
+import QuestionView from "./components/QuestionView";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  componentDidMount() {
+      // get the initial data, which allows the app to work
+      const { dispatch, loading } = this.props
+      if (loading === true) {
+          dispatch(handleInitialData())
+      }
+  }
+
+  render() {
+    return (
+        <Router>
+            <LoadingBar/>
+            {
+                !this.props.signedIn
+                    ?
+                    <>
+                    <Login/>
+                    </>
+                    :
+                    <>
+                    <Header
+                        loggedIn={this.props.signedIn}
+                        username={this.props.authedUserName}
+                        avatar={this.props.authedUserAvatar}
+                        characterClass={this.props.characterClass}
+                    />
+                    <Route exact path='/' component={Dashboard} />
+                    <Route path='/question/:id' component={QuestionView} />
+                    <Route path='/add' component={NewQuestion} />
+                    <Route path='/leaderboard' component={Leaderboard} />
+                    </>
+            }
+        </Router>
+    )
+  }
 }
 
-export default App;
+function mapStateToProps ({ authedUser, users }) {
+    return {
+        loading: authedUser === null,
+        signedIn: authedUser !== null,
+        authedUserName: authedUser ? users[authedUser].name : '',
+        authedUserAvatar: authedUser ? users[authedUser].avatarURL : '',
+        characterClass: authedUser ? users[authedUser].characterClass : ''
+    }
+}
+
+export default connect(mapStateToProps)(App);

@@ -1,0 +1,59 @@
+.leaderboard {
+  .leaderboard-table {
+    background: lighten($leaderboard_table_bg, 22%);
+    border-color: $leaderboard_table_border_color;
+
+    thead {
+      background: lighten($leaderboard_table_header_bg, 18%);
+      color: $text_color;
+
+      th {
+        border-color: $leaderboard_table_border_color;
+      }
+    }
+
+    th.rank-column {
+      width: 90px;
+    }
+
+    tr {
+      &.active {
+        background: lighten($leaderboard_table_bg, 16%);
+      }
+
+      td {
+        border-color: $leaderboard_table_border_color;
+        font-size: 1.2rem;
+        vertical-align: middle;
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  .userInfo-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .avatar {
+      width: 65px;
+      margin-right: 20px;
+    }
+
+    .author-meta {
+      .author-name,
+      .character-class {
+        margin-bottom: 0;
+      }
+
+      .author-name {
+
+      }
+
+      .character-class {
+
+      }
+    }
+  }
+
+}
